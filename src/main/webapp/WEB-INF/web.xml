@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <!-- Spring 전역에서 사용하는 -->
+  <!-- 앞으로 사용하는 library에 대한 설정 추가 -->
+  <!-- The definition of the Root Spring Container share -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/spring/root-context.xml</param-value>
+  </context-param>
+  
+  <!-- Creates the Spring Container shared by all Servlet and Filters -->
+  <!-- context가 올라오고 해제될 때 연락을 함 ContextLoaderListener에게 등록됨 -->
+  <!-- lifecycle 관리하기 쉽다 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+	<!-- Processes application requests -->
+	<!-- DispatcherServlet: 모든 요청을 받아들이는 servlet -->
+  <servlet>
+    <servlet-name>appServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>appServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>HiContorller</display-name>
+    <servlet-name>HiContorller</servlet-name>
+    <servlet-class>com.jieun.www.HiContorller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HiContorller</servlet-name>
+    <url-pattern>/HiContorller</url-pattern>
+  </servlet-mapping>
+</web-app>
