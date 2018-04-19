@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+
+<!-- tomcat server 설정 -->
+
+
   <!-- Spring 전역에서 사용하는 -->
   <!-- 앞으로 사용하는 library에 대한 설정 추가 -->
   <!-- The definition of the Root Spring Container share -->
   <context-param>
+		<!-- 이게 없으면 spring bean으로 등록되지 않음 -->
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/spring/root-context.xml</param-value>
   </context-param>

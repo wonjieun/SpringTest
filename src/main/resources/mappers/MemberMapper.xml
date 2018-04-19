@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="web.dao.MemberDao">
+
+	<resultMap type="web.dto.Member" id="Member">
+		<result property="idx" column="idx"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="joinDate" column="join_date"/>
+	</resultMap>
+
+<!-- 	<select id="selectAll" resultType="web.dto.Member"> -->
+<!-- joinDate JOIN_DATE가 연결 되지 않는다 -->
+<!-- 1. ALISE 사용 2. resultMap 사용 -->
+	<select id="selectAll" resultMap="Member">
+		SELECT * FROM member
+		ORDER BY idx
+	</select>
+	
+</mapper>
