@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<!--  POST 데이터 한글(UTF-8) 필터링  -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 <!-- tomcat server 설정 -->
-
-
   <!-- Spring 전역에서 사용하는 -->
   <!-- 앞으로 사용하는 library에 대한 설정 추가 -->
-  <!-- The definition of the Root Spring Container share -->
+  <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
   <context-param>
 		<!-- 이게 없으면 spring bean으로 등록되지 않음 -->
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/spring/root-context.xml</param-value>
   </context-param>
   
-  <!-- Creates the Spring Container shared by all Servlet and Filters -->
+  <!-- Creates the Spring Container shared by all Servlets and Filters -->
   <!-- context가 올라오고 해제될 때 연락을 함 ContextLoaderListener에게 등록됨 -->
   <!-- lifecycle 관리하기 쉽다 -->
   <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 	<!-- Processes application requests -->
 	<!-- DispatcherServlet: 모든 요청을 받아들이는 servlet -->
@@ -39,12 +54,13 @@
 
   <servlet>
     <description></description>
-    <display-name>HiContorller</display-name>
-    <servlet-name>HiContorller</servlet-name>
-    <servlet-class>com.jieun.www.HiContorller</servlet-class>
+    <display-name>HiController</display-name>
+    <servlet-name>HiController</servlet-name>
+    <servlet-class>com.jieun.www.HiController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HiContorller</servlet-name>
-    <url-pattern>/HiContorller</url-pattern>
+    <servlet-name>HiController</servlet-name>
+    <url-pattern>/HiController</url-pattern>
   </servlet-mapping>
+  
 </web-app>

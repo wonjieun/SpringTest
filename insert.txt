@@ -1,0 +1,24 @@
+ + 회원가입 로직
+
+ + 시작 URL : /member/main.do - 가입버튼 클릭
+ + 요청 URL : /member/insert.do
+
+ + Controller Method : MemberController.insert() - post
+  - 전달 파라미터 name, email, phone
+  - DTO : Member
+
+  - Service의 insert() 메소드 호출 (Member객체 전달)
+  - redirect : main.do
+	return "redirect:/member/main.do";
+
+ + Service : MemberService.insert()
+  - Controller가 클라이언트한테 받은 Member객체를 전달받음
+  - Dao의 insert() 호출 (Member 객체 전달)
+	
+ + Dao : MemberDao.insert()
+  - insert() 추상메소드 필요
+
+ + Mapper : insert query 작성
+  - <insert> 태그 추가
+	id 속성 : insert
+	parameterType : web.dto.Member

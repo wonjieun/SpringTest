@@ -20,4 +20,17 @@
 		ORDER BY idx
 	</select>
 	
+	<insert id="insert" parameterType="web.dto.Member">
+		INSERT INTO member (idx, name, email, phone)
+		VALUES( SEQ_TB_MEMBER_IDX.nextval
+			, #{name }
+			, #{email }
+			, #{phone } )
+	</insert>
+	
+	<select id="delete" parameterType="web.dto.Member">
+		DELETE member
+		WHERE idx = #{idx }
+	</select>
+	
 </mapper>

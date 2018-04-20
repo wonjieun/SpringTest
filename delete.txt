@@ -1,0 +1,20 @@
+ + 시작 URL : /member/main.do : 삭제버튼 클릭
+ + 요청 URL : /member/delete.do
+
+ + Controller Method : delete(Member member)
+  - Service의 delete(member) 호출
+
+  - redirect:/member/main.do
+
+ + MemberService
+  - public void delete(Member member);
+  - Dao의 delete(member) 호출
+
+ + MemberDao
+  - public void delete(Member member);
+
+ + MemberMapper
+  - <delete> 태그
+	id : delete
+	parameter Type : web.dto.Member
+	sql : Member테이블에 idx가 같은 행 삭제
