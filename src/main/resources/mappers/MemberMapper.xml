@@ -28,9 +28,36 @@
 			, #{phone } )
 	</insert>
 	
-	<select id="delete" parameterType="web.dto.Member">
+	<delete id="delete" parameterType="web.dto.Member">
 		DELETE member
 		WHERE idx = #{idx }
+	</delete>
+	
+	<update id="update" parameterType="web.dto.Member">
+		UPDATE member
+		SET
+			name = #{name }
+			, email = #{email }
+			, phone = #{phone }
+		WHERE idx = #{idx }
+	</update>
+	
+	<!-- 셋 중에 하나라도 null이면 에러 발생 -->
+	<select id="selectMember" parameterType="web.dto.Member" resultMap="Member">
+		SELECT * FROM member
+		WHERE 1=1
+		<if test="idx != null and idx != ''">
+			AND idx = #{idx }
+		</if>
+		<if test="name != null and name != ''">
+			AND name = #{name }
+		</if>
+		<if test="email != null and email != ''">
+			AND email = #{email }
+		</if>
+		<if test="phone != null and phone != ''">
+			AND phone = #{phone }
+		</if>
 	</select>
 	
 </mapper>

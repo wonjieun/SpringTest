@@ -28,4 +28,15 @@ public class MemberServiceImpl implements MemberService {
 	public void delete(Member member) {
 		memberDao.delete(member);
 	}
+	
+	@Override
+	public void update(Member member) {
+		memberDao.update(member);
+	}
+	
+	// service와 dao의 method이름을 맞춰주는 것이 헷갈리지 않는다
+	@Override
+	public Member getOneMember(Member member) {
+		return memberDao.selectMember(member);
+	}
 }

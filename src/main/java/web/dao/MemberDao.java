@@ -10,6 +10,13 @@ public interface MemberDao {
 
 	// Member 삽입
 	public void insert(Member member);
-	
+
+	// Member 삭제	
 	public void delete(Member member);
+
+	// Member 수정	
+	public void update(Member member);
+
+	// Member 조회	
+	public Member selectMember(Member member);
 }
