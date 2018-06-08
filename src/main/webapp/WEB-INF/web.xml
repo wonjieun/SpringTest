@@ -38,6 +38,7 @@
 
 	<!-- Processes application requests -->
 	<!-- DispatcherServlet: 모든 요청을 받아들이는 servlet -->
+	<!-- 요청을 url에 맞게 컨트롤러에 뿌려준다 -->
   <servlet>
     <servlet-name>appServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

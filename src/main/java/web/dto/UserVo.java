@@ -3,6 +3,7 @@ package web.dto;
 public class UserVo {
 	private String id;
 	private String pw;
+	
 	public String getId() {
 		return id;
 	}
